@@ -1562,7 +1562,7 @@ data ad.table1_study_ad;
   by bene_id;
   if a and b;
 run;
-data ad.table1_study_noad;
+data ad.table1_study_nonad;
   merge ad.table1_study_nonad(in=a)
         flag_Leukemia(in=b);
   by bene_id;
