@@ -59,8 +59,8 @@ run;
 proc logistic data=ad.reg1 descending;
     class AD_status(ref='0')
           SEX_IDENT_CD(ref='1') RTI_RACE_CD(ref='1') region_num(ref='1')
-          flag_MI flag_CHF flag_PVD flag_COPD
-          flag_RD flag_liver flag_renal flag_malignancy / param=ref;
+          flag_MI(ref='0') flag_CHF(ref='0') flag_PVD(ref='0') flag_COPD(ref='0')
+          flag_RD(ref='0') flag_liver(ref='0') flag_renal(ref='0') flag_malignancy(ref='0') / param=ref;
     model treatment(event='1') = AD_status
                                  age SEX_IDENT_CD RTI_RACE_CD region_num
                                  flag_MI flag_CHF flag_PVD
