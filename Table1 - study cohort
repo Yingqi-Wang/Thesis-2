@@ -2436,6 +2436,14 @@ proc freq data=final_flags_with_categories;
     tables category / missing;
 run;
 
+/* Add Income to Table1 */
+data ad.table1_study_ad;
+  merge ad.Table1_study_ad(in=a)
+        final_flags_with_categories(keep=bene_id category in=b);
+  by bene_id;
+  if a and b;
+run;
+
 
 /* for patients T2DM but without AD */
 data mbsf_T2DM_without_ad_study;
@@ -2493,5 +2501,11 @@ proc freq data=final_flags_with_categories;
     tables category / missing;
 run;
 
-
+/* Add Income to Table1 */
+data ad.table1_study_nonad;
+  merge ad.Table1_study_nonad(in=a)
+        final_flags_with_categories(keep=bene_id category in=b);
+  by bene_id;
+  if a and b;
+run;
 
