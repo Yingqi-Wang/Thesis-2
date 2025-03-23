@@ -297,5 +297,18 @@ proc sql;
 quit;
 
 
+   /* add CCI to table1 */
+ data ad.table1_with_ad;
+   merge ad.table1_with_ad(in=a)
+         CCI_with_ad(keep=bene_id charlson_index in=b);
+   by bene_id;
+   if a and b;
+ run;
 
+data ad.table1_without_ad;
+   merge ad.table1_without_ad(in=a)
+         CCI_non_ad(keep=bene_id charlson_index in=b);
+   by bene_id;
+   if a and b;
+ run;
 
