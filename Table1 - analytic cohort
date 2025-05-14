@@ -315,119 +315,98 @@ data ad.table1_without_ad;
 
 
 /////////////////// Income ////////////////////////
-/* for patients with T2DM and AD */
-data mbsf_T2DM_with_ad;
-  merge ad.mbsf(in=a)
-        ad.Table1_with_ad(in=b keep=bene_id);
+/* AD group*/
+data table1_with_ad;
+  merge ad.table1_with_ad(in=a)
+        ad.new_t2dm(in=b);
   by bene_id;
   if a and b;
 run;
 
-/* Create flags for each record (row-level processing) */
-data intermediate_flags;
-    set mbsf_t2DM_with_ad;
-
-    lis_flag_record = 0;
-    dual_flag_record = 0;
-
-    array lis_vars CST_SHR_GRP_CD_01-CST_SHR_GRP_CD_12;
-    do i = 1 to dim(lis_vars);
-        if lis_vars{i} in ('01', '02', '03', '04', '05', '06', '07', '08') then lis_flag_record = 1;
-    end;
-
-    array dual_vars DUAL_STUS_CD_01-DUAL_STUS_CD_12;
-    do i = 1 to dim(dual_vars);
-        if dual_vars{i} not in ('NA', '00', '09', '99') then dual_flag_record = 1;
-    end;
-
-    /* Drop the temporary loop variable */
-    drop i;
+data table1_with_ad;
+  set table1_with_ad;
+  index_year = year(index_date);
 run;
 
-/* Combine data across all years for each patient */
 proc sql;
-    create table final_flags as
-    select
-        bene_id,
-        max(lis_flag_record) as lis_flag,  /* If any year has LIS, set flag = 1 */
-        max(dual_flag_record) as dual_flag /* If any year has Dual, set flag = 1 */
-    from intermediate_flags
-    group by bene_id;
+  create table merged_ad as
+  select a.*, b.*
+  from table1_with_ad as a
+  left join ad.mbsf as b
+  on a.bene_id = b.bene_id and a.index_year = b.BENE_ENROLLMT_REF_YR;
 quit;
 
-/* Assign categories for LIS/Dual combinations */
-data final_flags_with_categories;
-    set final_flags;
-
-/* Define category based on LIS and Dual flags */
-    if lis_flag = 1 and dual_flag = 1 then category = 'Both';
-    else if lis_flag = 1 and dual_flag = 0 then category = 'LIS Status';
-    else if lis_flag = 0 and dual_flag = 1 then category = 'Dual Eligibility';
-    else if lis_flag = 0 and dual_flag = 0 then category = 'Neither';
+data merged_ad_income;
+  set merged_ad;
+  index_month = month(index_date);
+  array lis_vars{12} $ CST_SHR_GRP_CD_01 - CST_SHR_GRP_CD_12;
+  array dual_vars{12} $ DUAL_STUS_CD_01 - DUAL_STUS_CD_12;
+  lis_flag = 0;
+  dual_flag = 0;
+  if lis_vars{index_month} in ('01','02','03','04','05','06','07','08') then lis_flag = 1;
+  if dual_vars{index_month} not in ('NA', '00', '09', '99') then dual_flag = 1;
+  if lis_flag = 1 or dual_flag = 1 then low_income = 1;
+  else low_income = 0;
+  drop index_month;
 run;
 
-/* Summarize counts for each category */
-proc freq data=final_flags_with_categories;
-    tables category / missing;
+proc freq data=merged_ad_income;
+  tables low_income;
 run;
 
-/* for patients T2DM but without AD */
-data mbsf_T2DM_without_ad;
-  merge ad.mbsf(in=a)
-        ad.Table1_without_ad(in=b keep=bene_id);
+data ad.Table1_with_ad;
+  merge ad.Table1_with_ad(in=a)
+        merged_ad_income(keep=bene_id low_income in=b);
   by bene_id;
   if a and b;
 run;
 
-/* Create flags for each record (row-level processing) */
-data intermediate_flags;
-    set mbsf_t2DM_without_ad;
 
-    lis_flag_record = 0;
-    dual_flag_record = 0;
-
-    array lis_vars CST_SHR_GRP_CD_01-CST_SHR_GRP_CD_12;
-    do i = 1 to dim(lis_vars);
-        if lis_vars{i} in ('01', '02', '03', '04', '05', '06', '07', '08') then lis_flag_record = 1;
-    end;
-
-    array dual_vars DUAL_STUS_CD_01-DUAL_STUS_CD_12;
-    do i = 1 to dim(dual_vars);
-        if dual_vars{i} not in ('NA', '00', '09', '99') then dual_flag_record = 1;
-    end;
-
-    /* Drop the temporary loop variable */
-    drop i;
+/* nonAD group */
+data table1_without_ad;
+  merge ad.table1_without_ad(in=a)
+        ad.new_t2dm(in=b);
+  by bene_id;
+  if a and b;
 run;
 
-/* Combine data across all years for each patient */
+data table1_without_ad;
+  set table1_without_ad;
+  index_year = year(index_date);
+run;
+
 proc sql;
-    create table final_flags as
-    select
-        bene_id,
-        max(lis_flag_record) as lis_flag,  /* If any year has LIS, set flag = 1 */
-        max(dual_flag_record) as dual_flag /* If any year has Dual, set flag = 1 */
-    from intermediate_flags
-    group by bene_id;
+  create table merged_nonad as
+  select a.*, b.*
+  from table1_without_ad as a
+  left join ad.mbsf as b
+  on a.bene_id = b.bene_id and a.index_year = b.BENE_ENROLLMT_REF_YR;
 quit;
 
-/* Assign categories for LIS/Dual combinations */
-data final_flags_with_categories;
-    set final_flags;
-
-/* Define category based on LIS and Dual flags */
-    if lis_flag = 1 and dual_flag = 1 then category = 'Both';
-    else if lis_flag = 1 and dual_flag = 0 then category = 'LIS Status';
-    else if lis_flag = 0 and dual_flag = 1 then category = 'Dual Eligibility';
-    else if lis_flag = 0 and dual_flag = 0 then category = 'Neither';
+data merged_nonad_income;
+  set merged_nonad;
+  index_month = month(index_date);
+  array lis_vars{12} $ CST_SHR_GRP_CD_01 - CST_SHR_GRP_CD_12;
+  array dual_vars{12} $ DUAL_STUS_CD_01 - DUAL_STUS_CD_12;
+  lis_flag = 0;
+  dual_flag = 0;
+  if lis_vars{index_month} in ('01','02','03','04','05','06','07','08') then lis_flag = 1;
+  if dual_vars{index_month} not in ('NA', '00', '09', '99') then dual_flag = 1;
+  if lis_flag = 1 or dual_flag = 1 then low_income = 1;
+  else low_income = 0;
+  drop index_month;
 run;
 
-/* Summarize counts for each category */
-proc freq data=final_flags_with_categories;
-    tables category / missing;
+proc freq data=merged_nonad_income;
+  tables low_income;
 run;
 
-
+data ad.Table1_without_ad;
+  merge ad.Table1_without_ad(in=a)
+        merged_nonad_income(keep=bene_id low_income in=b);
+  by bene_id;
+  if a and b;
+run;
 
 
 
