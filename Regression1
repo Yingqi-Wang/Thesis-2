@@ -61,21 +61,14 @@ data ad.reg1;
     if charlson_index >= 5 then charlson_index = 5;
 run;
 
-data ad.reg1;
-    set ad.reg1;
-    if category in ("Both","LIS","Dual") then Income = 1;
-    else if category = "Neit" then Income = 0;
-run;
-
-
 
 proc logistic data=ad.reg1 descending;
     class AD_status(ref='0')
           SEX_IDENT_CD(ref='1') RTI_RACE_CD(ref='1') region_num(ref='1') 
-          Income(ref='0') charlson_index(ref='0') / param=ref;
+          Low_income(ref='0') charlson_index(ref='0') / param=ref;
     model treatment(event='1') = AD_status
                                  age SEX_IDENT_CD RTI_RACE_CD region_num
-                                 Income charlson_index / clodds=pl;
+                                 Low_income charlson_index / clodds=pl;
 run;
 
 
