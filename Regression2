@@ -23,12 +23,12 @@ run;
               SEX_IDENT_CD(ref='1')
               RTI_RACE_CD(ref='1')
               region_num(ref='1')
-              Income(ref='0')
+              Low_income(ref='0')
               charlson_index(ref='0') / param=ref;
 
         model &outcome (event='1') = AD_status
                                      age SEX_IDENT_CD RTI_RACE_CD
-                                     region_num Income charlson_index / clodds=pl;
+                                     region_num Low_income charlson_index / clodds=pl;
     run;
 %mend logit_model;
 
