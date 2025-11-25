@@ -1,3 +1,5 @@
+/* Among ID initiating drugs, association between AD & drug class */
+
 data reg2_with_ad;
   merge ad.reg1(in=a)
         ad.table1_with_ad(keep=bene_id in=b) ad.initiation_drug_user_with_ad(in=c);
