@@ -1,3 +1,5 @@
+/* In all study cohort, the association between AD & Drug Class */
+
 data reg3_with_ad;
   merge ad.reg1(in=a)
         ad.table1_study_ad(keep=bene_id in=b)
