@@ -1,0 +1,28 @@
+Jenner 0.1.0 (Unlicensed - limited to 100 observations)
+Get a license at https://jenneranalytics.com/license
+
+NOTE: Option OBS changed to 100.
+NOTE: ODS Graphics is OFF.
+NOTE: DATA Table1_study_ad
+
+NOTE: Processing inline DATALINES (20 lines)
+
+NOTE: Read 20 rows from DATALINES.
+NOTE: Wrote Table1_study_ad (20 rows, 4 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: PROC MEANS
+NOTE: PROC MEANS statement used.
+NOTE: PROC FREQ
+NOTE: Output dataset sex_counts has 2 observations and 3 variables.
+NOTE: PROC FREQ statement used.
+NOTE: PROC FREQ
+NOTE: Output dataset race_counts has 5 observations and 3 variables.
+NOTE: PROC FREQ statement used.
+NOTE: PROC FREQ
+NOTE: Output dataset region_counts has 4 observations and 3 variables.
+NOTE: PROC FREQ statement used.
+NOTE: PROC PRINT data=sex_counts
+
+NOTE: PROC PRINT completed: 2 observations printed, 3 variables

@@ -1,0 +1,8 @@
+{
+  "bundle": "t001_table2_drug_summary_sql",
+  "source_file": "15_Table2_visulization.sas",
+  "source_blob_sha": "f6cbaa67ad74abcc592b5a3cf8e10f74e4e9c752",
+  "source_commit": "367ba070fd76b9db76902580e91ae8d51d5eb734",
+  "tier": "real_data",
+  "notes": "Table 2 antidiabetic-drug-use summary. Keeps the author's two UNION ALL aggregation queries (per drug class, sum of *_user flags over the cohort, divided by the real 3999 / 244115 denominators) and the FULL JOIN that pivots them into one drug_summary table, then PROC PRINTs it. The two DUA-protected source datasets ad.drug_user_with_ad / ad.drug_user_without_ad are stood up in autoexec as small synthetic patient-level tables with identical 0/1 user-flag columns. The closing PROC SGPLOT clustered bar chart from the original script is replaced by PROC PRINT of the same drug_summary table so the bundle produces deterministic listing output."
+}

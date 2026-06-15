@@ -1,0 +1,7 @@
+                               T2DM Cohort: Index Date in 2017-2019 and Age 66+ at Index                                
+
+BENE_ID  INDEX_DATE  BIRTH_DATE  AGE
+C001      12MAR2017   01JUL1948   68
+C003      28FEB2019   30OCT1952   66
+C004      01JUN2017   20JAN1940   77
+

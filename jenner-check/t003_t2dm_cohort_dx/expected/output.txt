@@ -1,0 +1,13 @@
+                        Outpatient Type 2 Diabetes Claims (>1 qualifying claim per beneficiary)                         
+
+BENE_ID  CLM_FROM_DT  PRNCPAL_DGNS_CD  DX_COUNT
+B001       10FEB2019  E119                    3
+B001       04JUN2019  I10                     3
+B001       11APR2020  E1142                   3
+B003       15JAN2019  E1140                   2
+B003       08JUL2020  I252                    2
+B004       30SEP2019  E119                    2
+B004       26FEB2020  E1165                   2
+B007       19AUG2020  E1129                   2
+B007       01DEC2020  E119                    2
+

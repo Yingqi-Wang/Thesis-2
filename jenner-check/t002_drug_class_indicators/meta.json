@@ -1,0 +1,8 @@
+{
+  "bundle": "t002_drug_class_indicators",
+  "source_file": "12_Table1_analytic_cohort.sas",
+  "source_blob_sha": "abfc6779c461ce72fc38dc60ced028904fe0aae4",
+  "source_commit": "367ba070fd76b9db76902580e91ae8d51d5eb734",
+  "tier": "real_data",
+  "notes": "Antidiabetic drug-class tagging from Part D claims. Keeps the author's DATA step verbatim: it screens each claim's brand name (bn) and generic name (gnn) with the SAS `in:` prefix operator and upcase() to set eight 0/1 drug-class flags (insulin, metformin, DPP-4, GLP-1, SGLT2, sulfonylurea, TZD, alpha-glucosidase), then the PROC SQL max() rollup that collapses to one row per beneficiary. The DUA-protected source ad.all_claims_with_ad is replaced with a small synthetic claims table whose bn/gnn values are the real drug names the script matches on. Closes with PROC PRINT of the per-beneficiary flags and PROC MEANS sum/n of class use."
+}

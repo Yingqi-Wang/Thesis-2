@@ -1,0 +1,19 @@
+{
+  "_captured_at": "2026-06-15T16:52:32.869628+00:00",
+  "_captured_run_id": "r_019ecc3292e47f11a208d508addecc85",
+  "status": "ok",
+  "exit_code": 0,
+  "log_contains": [
+    "Output dataset sex_counts has 2 observations and 3 variables.",
+    "Output dataset region_counts has 4 observations and 3 variables.",
+    "PROC PRINT completed: 2 observations printed, 3 variables"
+  ],
+  "log_does_not_contain": [
+    "ERROR:",
+    "[JENNER-ERROR"
+  ],
+  "diagnostics": {
+    "parse_warnings": [],
+    "runtime_warnings": []
+  }
+}

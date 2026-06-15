@@ -1,0 +1,19 @@
+{
+  "_captured_at": "2026-06-15T16:47:52.636078+00:00",
+  "_captured_run_id": "r_019ecc2e769970c2a9c6f8289e83a488",
+  "status": "ok",
+  "exit_code": 0,
+  "log_contains": [
+    "Table initiation_drug_user_with_ad created.",
+    "PROC PRINT completed: 10 observations printed, 9 variables",
+    "Wrote all_claims_with_ad (17 rows, 11 columns)."
+  ],
+  "log_does_not_contain": [
+    "ERROR:",
+    "[JENNER-ERROR"
+  ],
+  "diagnostics": {
+    "parse_warnings": [],
+    "runtime_warnings": []
+  }
+}

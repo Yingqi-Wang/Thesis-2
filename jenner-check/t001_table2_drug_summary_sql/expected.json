@@ -1,0 +1,20 @@
+{
+  "_captured_at": "2026-06-15T16:42:47.694802+00:00",
+  "_captured_run_id": "r_019ecc29b0c070c08dcefbb8ea69f32a",
+  "status": "ok",
+  "exit_code": 0,
+  "log_contains": [
+    "Table drug_summary created.",
+    "PROC PRINT completed: 8 observations printed, 5 variables",
+    "Read 12 rows from DATALINES.",
+    "Read 14 rows from DATALINES."
+  ],
+  "log_does_not_contain": [
+    "ERROR:",
+    "[JENNER-ERROR"
+  ],
+  "diagnostics": {
+    "parse_warnings": [],
+    "runtime_warnings": []
+  }
+}

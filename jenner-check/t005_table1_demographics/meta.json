@@ -1,0 +1,8 @@
+{
+  "bundle": "t005_table1_demographics",
+  "source_file": "11_Table1_study_cohort.sas",
+  "source_blob_sha": "261fc13a489859af2f8b995f7379ce3b2bd421c0",
+  "source_commit": "367ba070fd76b9db76902580e91ae8d51d5eb734",
+  "tier": "real_data",
+  "notes": "Table 1 cohort descriptives. Keeps the author's PROC MEANS mean/std on age and the three PROC FREQ tables (sex_ident_cd, RTI_RACE_CD, Region) with the out= output-dataset and the rename=(percent=...) recode, then PROC PRINT of the sex_counts output dataset to show the renamed column. The DUA-protected ad.Table1_study_ad table is replaced with a small synthetic cohort carrying the same age / sex_ident_cd / RTI_RACE_CD / Region columns."
+}

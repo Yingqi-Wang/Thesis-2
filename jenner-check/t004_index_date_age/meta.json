@@ -1,0 +1,8 @@
+{
+  "bundle": "t004_index_date_age",
+  "source_file": "04_add_index_date_and_exclude_65.sas",
+  "source_blob_sha": "996fe4d24d439821aea136d173b97e61eca49195",
+  "source_commit": "367ba070fd76b9db76902580e91ae8d51d5eb734",
+  "tier": "real_data",
+  "notes": "Index-date derivation and 66+ age restriction. Keeps the author's PROC SQL min(CLM_FROM_DT) per beneficiary as the index date, the merge back onto claims, the SAS date-literal range filter ('01JAN2017'd .. '31DEC2019'd), the date-of-birth merge, and the age = int((index_date - birth_date)/365.25) calculation with the age>=66 keep. The DUA-protected all_t2dm claims and mbsf birth-date table are replaced with small synthetic tables whose CLM_FROM_DT / bene_birth_dt are read as SAS dates. Closes with PROC PRINT of the retained cohort."
+}
