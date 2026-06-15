@@ -1,0 +1,8 @@
+{
+  "bundle": "t003_t2dm_cohort_dx",
+  "source_file": "02_getting_all_T2DM_2017_2020.sas",
+  "source_blob_sha": "edee023da1f11580875b45001804139b48a0bd20",
+  "source_commit": "367ba070fd76b9db76902580e91ae8d51d5eb734",
+  "tier": "real_data",
+  "notes": "Type 2 diabetes outpatient-cohort identification. Keeps the author's WHERE filter using the SAS `in: ('E11')` prefix-match operator across the principal and secondary ICD-10 diagnosis columns, the multi-year SET concatenation, PROC SORT, and the PROC SQL count(*)/GROUP BY that keeps only beneficiaries with more than one qualifying outpatient claim. The DUA-protected op19/op20 outpatient libraries are replaced with two small synthetic claim tables; the real script screens 25 secondary diagnosis columns, here trimmed to the first four to keep the bundle compact while still exercising the E11 prefix logic. Closes with PROC PRINT of the retained claims."
+}

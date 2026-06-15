@@ -1,0 +1,68 @@
+Jenner 0.1.0 (Unlicensed - limited to 100 observations)
+Get a license at https://jenneranalytics.com/license
+
+NOTE: Option OBS changed to 100.
+NOTE: DATA op19
+
+NOTE: Processing inline DATALINES (6 lines)
+
+NOTE: Read 6 rows from DATALINES.
+NOTE: Wrote op19 (6 rows, 7 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: DATA op20
+
+NOTE: Processing inline DATALINES (6 lines)
+
+NOTE: Read 6 rows from DATALINES.
+NOTE: Wrote op20 (6 rows, 7 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: DATA op_T2DM_2019
+
+
+NOTE: Read 6 rows from op19.
+NOTE: Wrote op_T2DM_2019 (5 rows, 7 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: DATA op_T2DM_2020
+
+
+NOTE: Read 6 rows from op20.
+NOTE: Wrote op_T2DM_2020 (5 rows, 7 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: DATA op_T2DM
+
+
+NOTE: Read 5 rows from op_T2DM_2019.
+NOTE: Read 10 rows from op_T2DM_2020.
+NOTE: Wrote op_T2DM (10 rows, 7 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: PROC SORT data=op_T2DM
+
+NOTE: Unlicensed mode - input limited to 100 observations.
+NOTE: Read 10 rows from op_T2DM.
+NOTE: Wrote op_T2DM (10 rows, 7 columns).
+NOTE: PROC SORT statement used.
+NOTE: PROC SQL 
+
+NOTE: Table op_t2dm_count created.
+NOTE: PROC SQL statement used.
+NOTE: DATA op_t2dm
+
+
+NOTE: Read 10 rows from op_t2dm_count.
+NOTE: Wrote op_t2dm (9 rows, 8 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: PROC PRINT data=op_t2dm
+
+NOTE: PROC PRINT completed: 9 observations printed, 4 variables

@@ -1,0 +1,30 @@
+                                   Per-Beneficiary Antidiabetic Drug-Class Use Flags                                    
+
+BENE_ID  INSULIN_USER  METFORMIN_USER  DPP4_USER  GLP1_USER  SGLT2_USER  SULF_USER  TZD_USER  ALPHA_USER
+A001                1               1          0          0           0          0         0           0
+A002                0               1          1          0           0          0         0           0
+A003                0               0          0          1           1          0         0           0
+A004                0               0          0          0           0          1         0           0
+A005                0               0          0          0           0          0         1           1
+A006                0               0          0          1           1          0         0           0
+A007                0               1          0          0           0          0         0           0
+A008                1               0          1          0           0          0         0           0
+A009                0               0          0          0           0          1         0           0
+A010                0               1          0          0           1          0         0           0
+
+                               Number of Beneficiaries Using Each Antidiabetic Drug Class                               
+
+                                                  The MEANS Procedure
+
+ Variable                  Sum        N
+ --------------------------------------
+ INSULIN_USER        2.0000000       10
+ METFORMIN_USER      4.0000000       10
+ DPP4_USER           2.0000000       10
+ GLP1_USER           2.0000000       10
+ SGLT2_USER          3.0000000       10
+ SULF_USER           2.0000000       10
+ TZD_USER            1.0000000       10
+ ALPHA_USER          1.0000000       10
+ --------------------------------------
+

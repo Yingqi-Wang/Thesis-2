@@ -1,0 +1,30 @@
+Jenner 0.1.0 (Unlicensed - limited to 100 observations)
+Get a license at https://jenneranalytics.com/license
+
+NOTE: Option OBS changed to 100.
+NOTE: DATA all_claims_with_ad
+
+NOTE: Processing inline DATALINES (17 lines)
+
+NOTE: Read 17 rows from DATALINES.
+NOTE: Wrote all_claims_with_ad (17 rows, 3 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: DATA all_claims_with_ad
+
+
+NOTE: Read 17 rows from all_claims_with_ad.
+NOTE: Wrote all_claims_with_ad (17 rows, 11 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: PROC SQL 
+
+NOTE: Table initiation_drug_user_with_ad created.
+NOTE: PROC SQL statement used.
+NOTE: PROC PRINT data=initiation_drug_user_with_ad
+
+NOTE: PROC PRINT completed: 10 observations printed, 9 variables
+NOTE: PROC MEANS
+NOTE: PROC MEANS statement used.
